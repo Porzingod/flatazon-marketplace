@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   post '/dashboard', to: "users#create"
   get '/dashboard', to: "users#show"
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update] do
+    resources :addresses, only: [:edit, :update]
+  end
   resources :carts, only: [:show, :edit, :update]
   resources :categories do
     resources :items do
