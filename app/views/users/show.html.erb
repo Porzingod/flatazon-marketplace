@@ -11,3 +11,7 @@
 
 
 <%= link_to "Edit Profile", edit_user_path(@user)%>
+
+<%= form_tag '/signout' do %>
+  <%= submit_tag 'Sign Out'%>
+<% end %>
