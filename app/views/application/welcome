@@ -1,3 +1,0 @@
-sign in (link_to new_session_path)
-sign up (link_to new_user_path)
-continue as guest (link_to items_path)

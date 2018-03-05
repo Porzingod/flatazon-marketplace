@@ -1,0 +1,28 @@
+<%= form_for @user, url: '/dashboard' do |f| %>
+  <%= f.label :username %><br>
+  <%= f.text_field :username %><br>
+  <%= f.label :email %><br>
+  <%= f.text_field :email %><br><br>
+  <div>
+    <%= f.fields_for :addresses do |addr| %>
+      <%= addr.label :street_address_1 %><br>
+      <%= addr.text_field :street_address_1 %><br>
+      <%= addr.label :street_address_2 %><br>
+      <%= addr.text_field :street_address_2 %><br>
+      <%= addr.label :city %><br>
+      <%= addr.text_field :city %><br>
+      <%= addr.label :state %><br>
+      <%= addr.text_field :state %><br>
+      <%= addr.label :zipcode %><br>
+      <%= addr.number_field :zipcode %><br>
+      <%= addr.label :address_type %><br>
+      <%= addr.text_field :address_type %><br><br>
+    <% end %>
+  </div>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+  <%= f.label :password_confirmation %><br>
+  <%= f.password_field :password_confirmation %><br>
+  <%= f.submit "Create Account" %>
+  <%= link_to "Back", root_path %>
+<% end %>
