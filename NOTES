@@ -1,0 +1,68 @@
+NOTES
+
+Classes:
+- User
+  has_many :carts
+  has_many :items, through: :carts
+  initiazlize with username, email, password, address
+
+  username, email - uniqueness, presence
+  password - password_digest in create_table
+    has_secure_password
+
+  home ('/dashboard') : greeting, show cart (max 5 items) w/ link to full cart.
+    ** past orders
+
+  show ('/:id') : links to edit their profile
+
+  edit ('/:id/edit')
+
+  update
+
+  new
+
+  create
+
+  can browse site without being logged in based on session data
+
+- Cart
+  belongs_to :user
+  belongs_to :item
+
+  show ('/:id')
+
+- Item
+  has_many :reviews
+  belongs_to :category
+  belongs_to :carts
+  has_many :users, through: :carts
+
+  index
+  show
+  new
+  create
+  edit
+  update
+  destroy
+
+- Category
+  has_many :items
+
+  -prefill categories in seed
+  index
+  show
+
+- Item_Review (items/:id/reviews)
+  belongs_to :item
+
+  index
+  new
+  create
+
+Controllers:
+- users
+- items
+- session
+- cart
+- categories
+- review
