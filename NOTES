@@ -4,6 +4,7 @@ Classes:
 - User
   has_many :carts
   has_many :items, through: :carts
+  has_many :reviews
   initiazlize with username, email, password, address
 
   username, email - uniqueness, presence
@@ -32,6 +33,8 @@ Classes:
   show ('/:id')
 
 - Item
+  name, price, quantity
+
   has_many :reviews
   belongs_to :category
   belongs_to :carts
@@ -46,6 +49,7 @@ Classes:
   destroy
 
 - Category
+  name
   has_many :items
 
   -prefill categories in seed
