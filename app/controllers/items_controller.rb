@@ -25,9 +25,12 @@ class ItemsController < ApplicationController
   def destroy
   end
 
-  def add_to_cart(item_id)
+  def add_to_cart
     if session[:user_id]
-      User.find(session[:user_id]).cart << Item.find(item_id)
+      @user = User.find(session[:user_id])
+      @item = Item.find(params[:id])
+      @user.add_to_cart(@item)
+      redirect_to '/items/all'
     else
       render :show
     end

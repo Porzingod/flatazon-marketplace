@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show] do
     resources :items, except: [:index] do
+      member do
+        post 'add_to_cart'
+      end
       resources :reviews, only: [:index]
     end
   end

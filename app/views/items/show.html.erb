@@ -13,4 +13,6 @@
   Reviews placeholder
 </div>
 
-<%= link_to "Add to Cart", add_to_cart(@item.id) %>
+<%= form_tag add_to_cart_category_item_path(@item.category, @item) do %>
+  <%= submit_tag 'Add to Cart'%>
+<% end %>
