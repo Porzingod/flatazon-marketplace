@@ -1,0 +1,6 @@
+<%= form_for @user, url: '/dashboard' do |f| %>
+  <%= render partial: 'form', locals: {f: f} %>
+
+  <%= f.submit "Update Account" %>
+  <%= link_to "Back", root_path %>
+<% end %>

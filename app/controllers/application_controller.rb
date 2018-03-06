@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    session[:user] ||= nil
+    session[:user_id] ||= nil
+  end
+
+  def welcome
+    if session[:user_id]
+      redirect_to '/dashboard'
+    end
   end
 end

@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
 
   def new
-    if !session[:user].nil?
-      redirect_to "/dashboard"
+    if session[:user_id]
+      redirect_to '/dashboard'
     end
   end
 
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if params[:password] || params[:password] != ""
       @user = User.find_by(username: params[:username])
       if @user.authenticate(params[:password])
-        session[:user] = @user.id
+        session[:user_id] = @user.id
         redirect_to "/dashboard"
       else
         render :new
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     if params
-      session.delete(:user)
+      session.delete(:user_id)
       redirect_to '/'
     else
       redirect_to '/'

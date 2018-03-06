@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   post '/signout', to: "sessions#destroy"
   get '/signup', to: "users#new"
   post '/dashboard', to: "users#create"
+  patch '/dashboard', to: "users#update"
   get '/dashboard', to: "users#show"
   get '/items/all', to: "items#index"
 
-  resources :users, only: [:edit, :update] do
+  resources :users, only: [:edit] do
     resources :addresses, only: [:edit, :update]
   end
   resources :carts, only: [:show, :edit, :update]
