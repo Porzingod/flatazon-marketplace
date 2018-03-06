@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    #
   end
 
   def add_to_cart
