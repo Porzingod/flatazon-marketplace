@@ -9,11 +9,14 @@ Rails.application.routes.draw do
   patch '/dashboard', to: "users#update"
   get '/dashboard', to: "users#show"
   get '/items/all', to: "items#index"
+  get '/cart', to: "carts#show"
 
   resources :users, only: [:edit] do
     resources :addresses, only: [:edit, :update]
   end
-  resources :carts, only: [:show, :edit, :update]
+
+  resources :carts, only: [:new, :create, :edit, :update]
+
   resources :categories, only: [:show] do
     resources :items, except: [:index] do
       resources :reviews, only: [:index]

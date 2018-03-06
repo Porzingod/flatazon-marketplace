@@ -1,4 +1,15 @@
-<h1><%= @user.username %> Dashboard</h1>
+<div>
+  <ul>
+    <li><%= link_to "Big Name Shop", '/items/all' %></li>
+    <li><%= link_to "Cart Placeholder", '/cart' %></li>
+    <li><%= form_tag '/signout' do %>
+      <%= submit_tag 'Sign Out'%>
+    <% end %></li>
+  </ul>
+</div>
+
+<h1><%= @user.username %> Dashboard <%= link_to "Shop", '/items/all' %></h1>
+
 <p><%= @user.email %></p>
 <div>
   <%= @user.addresses[0].street_address_1 %> <br>
@@ -9,7 +20,3 @@
 </div>
 
 <%= link_to "Edit Profile", edit_user_path(@user)%>
-
-<%= form_tag '/signout' do %>
-  <%= submit_tag 'Sign Out'%>
-<% end %>

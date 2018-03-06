@@ -11,4 +11,5 @@ class Item < ApplicationRecord
   def price_formatted
     "$#{sprintf("%.2f", price)}"
   end
+
 end
