@@ -52,6 +52,8 @@ class UsersController < ApplicationController
       :email,
       :password,
       :password_confirmation,
+      :cart,
+      cart: [],
       addresses_attributes: [
         :id,
         :street_address_1,

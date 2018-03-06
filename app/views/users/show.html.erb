@@ -8,15 +8,17 @@
   </ul>
 </div>
 
-<h1><%= @user.username %> Dashboard <%= link_to "Shop", '/items/all' %></h1>
+<h1><%= @user.username.titleize %>'s Dashboard</h1>
+<h2><%= link_to "Shop", '/items/all' %></h2>
 
-<p><%= @user.email %></p>
+<p>Email:<br><%= @user.email %></p>
+Address:
 <div>
   <%= @user.addresses[0].street_address_1 %> <br>
   <%= @user.addresses[0].street_address_2 %> <br>
   <%= @user.addresses[0].city %> <br>
   <%= @user.addresses[0].state %> <br>
   <%= @user.addresses[0].zipcode %><br>
-</div>
+</div> <br>
 
 <%= link_to "Edit Profile", edit_user_path(@user)%>

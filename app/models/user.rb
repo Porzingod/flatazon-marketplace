@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  serialize :cart
   has_secure_password
 
   # has_many :items
@@ -8,6 +7,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :addresses, allow_destroy: true
 
   validates :username, :email, uniqueness: true
+  serialize :cart, Array
 
   def add_to_cart(item)
     self.cart << item
