@@ -7,13 +7,14 @@ Rails.application.routes.draw do
   get '/signup', to: "users#new"
   post '/dashboard', to: "users#create"
   get '/dashboard', to: "users#show"
+  get '/items/all', to: "items#index"
 
   resources :users, only: [:edit, :update] do
     resources :addresses, only: [:edit, :update]
   end
   resources :carts, only: [:show, :edit, :update]
-  resources :categories do
-    resources :items do
+  resources :categories, only: [:show] do
+    resources :items, except: [:index] do
       resources :reviews, only: [:index]
     end
   end

@@ -8,4 +8,7 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :quantity, inclusion: 1..99
 
+  def price_formatted
+    "$#{sprintf("%.2f", price)}"
+  end
 end
