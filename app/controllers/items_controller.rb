@@ -26,11 +26,11 @@ class ItemsController < ApplicationController
   end
 
   def add_to_cart
-    byebug
     if session[:user_id]
       @user = User.find(session[:user_id])
       @item = Item.find(params[:id])
       @user.add_to_cart(@item)
+      @user.save
       redirect_to '/cart'
     else
       render :show
