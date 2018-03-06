@@ -13,4 +13,7 @@ class User < ApplicationRecord
     self.cart << item
   end
 
+  def cart_total
+    self.cart.reduce(0) {|sum, item| sum + item.price}
+  end
 end

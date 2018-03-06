@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:id])
       @user.add_to_cart(@item)
       @user.save
+      byebug
       redirect_to '/cart'
     else
       render :show
