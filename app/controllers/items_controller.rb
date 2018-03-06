@@ -1,25 +1,33 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all
   end
 
   def show
-    set_item
   end
 
   def new
+    @item = Item.new
   end
 
   def create
+    @item = Item.create(item_params)
+
+    if @item.save
+      redirect_to category_item_path(@item.category, @item)
+    else
+      render :new
+    end
   end
 
   def edit
-    set_item
+    if @item.update(item_params)
+
   end
 
   def update
-    set_item
   end
 
   def destroy
@@ -45,5 +53,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
+    params.require(:item).permit(:price, :user, :name, :quantity, :category_id, :avatar)
   end
 end

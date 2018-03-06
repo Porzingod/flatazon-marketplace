@@ -1,0 +1,19 @@
+<%= form_for @item, url: category_item_path(@item.category, @item), html: { multipart: true } do |form| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+    <h2>There were some errors:</h2>
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :name %> <br>
+  <%= f.number_field :price %> <br>
+  <%= f.number_field :quantity %> <br>
+  <%= f.collection_select(:category_id, Category.all, :id, :name) %> <br>
+  <%= f.file_field "item[avatar]"%> <br>
+  <%= f.submit %>
+<% end %>

@@ -1,4 +1,9 @@
 <h1>Image Placeholder</h1>
+
+<%= image_tag @item.avatar.url %>
+<%= image_tag @item.avatar.url(:medium) %>
+<%= image_tag @item.avatar.url(:thumb) %>
+
 <div>
   <%= @item.name %><br>
   <%= @item.price_formatted %><br>
