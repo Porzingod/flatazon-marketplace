@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to category_item_path(@item.category, @item)
     else
-      render :new
+      render :new, :notice => 'there was an error'
     end
   end
 
@@ -26,18 +26,20 @@ class ItemsController < ApplicationController
   end
 
   def update
+    byebug
     if @item.update(item_params)
       redirect_to category_item_path(@item.category, @item)
     else
-      render :edit
+      render :edit, :notice => 'there was an error'
     end
   end
 
   def destroy
-    if item[:owner_id] == session[:user_id]
-      item.destroy
+    if @item.user.id == session[:user_id]
+      @item.destroy
+      redirect_to '/inventory'
     else
-      error "you do not have permission to delete this item"
+      render :edit, :notice => "This item is sold by another user."
     end
   end
 
@@ -52,16 +54,13 @@ class ItemsController < ApplicationController
           Cart.create(user: @user, item: @item)
           redirect_to '/cart'
         else
-          render :show
-          #can't add own item to cart
+          render :show, :notice => 'You can\'t add your own item to cart'
         end
       else
-        render :show
-        #can't add greater qty than available
+        render :show, :notice => 'Maximum available quantity has been added to cart'
       end
     else
-      render :show
-      #can't add items to cart unless signed in
+      render :show, :notice => 'Please sign in to add items to cart'
     end
   end
 

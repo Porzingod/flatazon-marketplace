@@ -1,6 +1,6 @@
 <h1>Edit Item</h1> <br>
 
-<%= form_for @item, url: items_all_path do |f| %>
+<%= form_for @item, url: category_item_path(@item.category, @item) do |f| %>
   <%= f.label :name %>
   <%= f.text_field "name" %>
   <%= f.label :price %>
@@ -17,4 +17,4 @@
   <%= f.submit "Edit Item"%>
 <% end %>
 
-<%= link_to "Delete Item", delete_category_item_path(@item.category, @item) %>
+<%= button_to 'Delete Item', category_item_path(@item.category, @item), :method => 'delete' %>

@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   get '/cart', to: "carts#cart"
   get '/items/new', to: "items#new"
   post '/items/all', to: 'items#create'
+  # patch '/categories/:category_id/items/:id', to: "items#update"
   get '/cart', to: "carts#index"
   post '/checkout', to: "carts#checkout"
   get '/carts/:id', to: "carts#destroy"
   get '/inventory', to: "users#inventory"
+  # post '/delete_item', to: "items#destroy"
 
   resources :users, only: [:edit] do
     resources :addresses, only: [:edit, :update]

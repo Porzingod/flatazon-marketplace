@@ -27,16 +27,16 @@ class CartsController < ApplicationController
         end
         cart.delete
       end
-      redirect_to '/dashboard'
+      redirect_to '/dashboard', :notice => 'Cart successfully checked out'
     else
-      redirect_to '/cart'
+      redirect_to '/cart', :notice => 'You do not have enough balance to check out'
     end
   end
 
   def destroy
     @cart = Cart.find(params[:id])
     @cart.delete
-    redirect_to '/cart'
+    redirect_to '/cart', :notice => 'Item was successfully removed'
   end
 
   def empty
