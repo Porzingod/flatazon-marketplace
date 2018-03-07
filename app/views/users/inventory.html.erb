@@ -1,0 +1,30 @@
+  <table>
+    <col width="200">
+    <col width="300">
+    <col width="100">
+    <col width="100">
+    <col width="100">
+    <thead>
+     <tr>
+       <th colspan="5"></th>
+     </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Image</strong></td>
+        <td><strong>Name</strong></td>
+        <td><strong>Price</strong></td>
+        <td><strong>Quantity</strong></td>
+        <td><strong></strong></td>
+      </tr>
+      <% @user.items.each do |item| %>
+      <tr>
+        <td>Image Placeholder</td>
+        <td><%= item.name %></td>
+        <td>$ <%= item.price_formatted %></td>
+        <td><%= item.quantity %></td>
+        <td><%= link_to "Edit Item", edit_category_item_path(item.category, item)%> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

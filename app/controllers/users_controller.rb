@@ -40,6 +40,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def inventory
+    get_user
+  end
+
   private
 
   def get_user

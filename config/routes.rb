@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/cart', to: "carts#index"
   post '/checkout', to: "carts#checkout"
   get '/carts/:id', to: "carts#destroy"
+  get '/inventory', to: "users#inventory"
 
   resources :users, only: [:edit] do
     resources :addresses, only: [:edit, :update]
