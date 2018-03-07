@@ -1,7 +1,10 @@
 class CartsController < ApplicationController
-  def index
+  def cart
     @user = User.find(session[:user_id])
     @cart = @user.cart
+  end
+
+  def show
   end
 
   def checkout
@@ -25,6 +28,23 @@ class CartsController < ApplicationController
         cart.delete
       end
       redirect_to '/cart'
+    else
+      redirect_to '/cart'
+    end
+  end
+
+  def destroy
+    @cart = Cart.find(params[:id])
+    @cart.delete
+    redirect_to '/cart'
+  end
+
+  def empty
+    @user = User.find(session[:user_id])
+    @cart = @user.cart
+    if @cart[0].present?
+      @cart.each {|cart| cart.delete}
+      redirect_to '/items/all'
     else
       redirect_to '/cart'
     end

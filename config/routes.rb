@@ -9,14 +9,19 @@ Rails.application.routes.draw do
   patch '/dashboard', to: "users#update"
   get '/dashboard', to: "users#show"
   get '/items/all', to: "items#index"
-  get '/cart', to: "carts#index"
+  get '/cart', to: "carts#cart"
   post '/checkout', to: "carts#checkout"
+  get '/carts/:id', to: "carts#destroy"
 
   resources :users, only: [:edit] do
     resources :addresses, only: [:edit, :update]
   end
 
-  resources :carts, only: [:new, :create, :edit, :update]
+  resources :carts, only: [:new, :create, :show, :edit, :update] do
+    member do
+      post 'empty'
+    end
+  end
 
   resources :categories, only: [:show] do
     resources :items, except: [:index] do

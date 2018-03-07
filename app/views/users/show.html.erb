@@ -12,14 +12,19 @@
 <h2><%= link_to "Shop", '/items/all' %></h2>
 
 <p>Email:<br><%= @user.email %></p>
-Address:
+
 <div>
+  Address: <br>
   <%= @user.addresses[0].street_address_1 %> <br>
   <%= @user.addresses[0].street_address_2 %> <br>
   <%= @user.addresses[0].city %> <br>
   <%= @user.addresses[0].state %> <br>
   <%= @user.addresses[0].zipcode %><br>
-</div> <br>
+</div>
 
-$<%= @user.format_balance %><br>
+<p>Balance:<br>$<%= @user.format_balance %></p>
+
+<div class="">
+  Orders: 
+</div>
 <%= link_to "Edit Profile", edit_user_path(@user)%>

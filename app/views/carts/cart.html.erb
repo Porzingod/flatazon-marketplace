@@ -6,7 +6,7 @@
   <col width="100">
   <thead>
    <tr>
-     <th colspan="4"></th>
+     <th colspan="5"></th>
    </tr>
   </thead>
   <tbody>
@@ -23,6 +23,7 @@
           <td><%= cart.item.name%></td>
           <td>1</td>
           <td>$<%= cart.item.price_formatted %></td>
+          <td><%= link_to "Remove Item", controller: "carts", action: "destroy", id: cart.id %></td>
         </tr>
       <% end %>
     <% end %>
@@ -48,6 +49,14 @@
 <div class="">
   <%= form_tag '/checkout' do %>
     <%= submit_tag 'Check Out'%>
+  <% end %>
+</div> <br>
+
+<div class="">
+  <% if @cart.present? %>
+    <%= form_tag empty_cart_path(@cart) do %>
+      <%= submit_tag 'Empty Shopping Cart'%>
+    <% end %>
   <% end %>
 </div> <br>
 
