@@ -21,4 +21,5 @@ Address:
   <%= @user.addresses[0].zipcode %><br>
 </div> <br>
 
+$<%= @user.format_balance %><br>
 <%= link_to "Edit Profile", edit_user_path(@user)%>

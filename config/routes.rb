@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   patch '/dashboard', to: "users#update"
   get '/dashboard', to: "users#show"
   get '/items/all', to: "items#index"
-  get '/cart', to: "carts#show"
+  get '/cart', to: "carts#index"
+  post '/checkout', to: "carts#checkout"
 
   resources :users, only: [:edit] do
     resources :addresses, only: [:edit, :update]

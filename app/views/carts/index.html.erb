@@ -1,0 +1,51 @@
+<table>
+  <col width="200">
+  <col width="300">
+  <col width="100">
+  <col width="100">
+  <thead>
+   <tr>
+     <th colspan="4"></th>
+   </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Image</strong></td>
+      <td><strong>Item</strong></td>
+      <td><strong>Quantity</strong></td>
+      <td><strong>Price</strong></td>
+    </tr>
+    <% @cart.each do |cart| %>
+      <% if cart.item.present? %>
+        <tr>
+          <td>image placeholder </td>
+          <td><%= cart.item.name%></td>
+          <td>1</td>
+          <td>$<%= cart.item.price_formatted %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    <div class="">
+      <tr>
+        <td></td>
+        <td></td>
+        <td><strong>Subtotal: </strong></td>
+        <% if @user.cart[0].item.present? %>
+          <td>$<%= @user.cart_total %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><strong>My Balance: </strong></td>
+        <td>$<%= @user.format_balance %></td>
+      </tr>
+    </div>
+  </tbody>
+</table>
+
+<div class="">
+  <%= form_tag '/checkout' do %>
+    <%= submit_tag 'Check Out'%>
+  <% end %>
+</div>

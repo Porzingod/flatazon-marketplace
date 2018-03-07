@@ -5,7 +5,8 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.float :price
       t.integer :quantity
       t.belongs_to :category
-      
+      t.belongs_to :user
+
       t.timestamps
     end
   end

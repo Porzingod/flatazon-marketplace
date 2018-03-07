@@ -27,13 +27,16 @@ class ItemsController < ApplicationController
   end
 
   def add_to_cart
+    set_item
     if session[:user_id]
-      @user = User.find(session[:user_id])
-      @item = Item.find(params[:id])
-      @user.add_to_cart(@item)
-      @user.save
-      byebug
-      redirect_to '/cart'
+      if @item.user.id != session[:user_id]
+        @user = User.find(session[:user_id])
+        @item = Item.find(params[:id])
+        Cart.create(user: @user, item: @item)
+        redirect_to '/cart'
+      else
+        render :show
+      end
     else
       render :show
     end

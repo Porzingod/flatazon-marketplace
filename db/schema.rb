@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306191706) do
+ActiveRecord::Schema.define(version: 20180307005444) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street_address_1"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20180306191706) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_id"
+    t.index ["item_id"], name: "index_carts_on_item_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -36,9 +43,21 @@ ActiveRecord::Schema.define(version: 20180306191706) do
     t.float "price"
     t.integer "quantity"
     t.integer "category_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "order_date"
+    t.integer "user_id"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_orders_on_item_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -56,9 +75,9 @@ ActiveRecord::Schema.define(version: 20180306191706) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.float "balance", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "cart", default: "--- []\n"
   end
 
 end
