@@ -4,6 +4,8 @@
   $ <%= @item.price_formatted %><br>
   <%= @item.quantity %> Available<br>
   Sold by: <%= @item.user.username %><br>
+  <strong>Image:</strong>
+  <%= image_tag(@item.image_url(:thumb)) %>
 </div>
 
 <div class="">
