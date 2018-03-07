@@ -30,7 +30,7 @@
         <td></td>
         <td></td>
         <td><strong>Subtotal: </strong></td>
-        <% if @user.cart[0].item.present? %>
+        <% if @user.cart[0].present? %>
           <td>$<%= @user.cart_total %></td>
         <% end %>
       </tr>
