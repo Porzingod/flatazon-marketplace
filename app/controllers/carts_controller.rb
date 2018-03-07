@@ -6,11 +6,11 @@ class CartsController < ApplicationController
 
   def checkout
     @user = User.find(session[:user_id])
-    @cart = @user.cart
+    @user.cart
     if @user.balance >= @user.cart_total.to_f
       buyer_balance = @user.balance.to_f
       order_date = Time.now
-      @cart.each do |cart|
+      @user.cart.each do |cart|
         citem = cart.item
         seller_balance = citem.user.balance
         item_qty_remaining = citem.quantity
@@ -22,7 +22,7 @@ class CartsController < ApplicationController
         if citem.quantity == 0
           citem.delete
         end
-        @cart.shift
+        cart.delete
       end
       redirect_to '/cart'
     else
