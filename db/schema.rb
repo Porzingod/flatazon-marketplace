@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20180307005444) do
     t.string "name"
     t.float "price"
     t.integer "quantity"
+    t.string "image"
     t.integer "category_id"
     t.integer "user_id"
     t.string "description", default: ""

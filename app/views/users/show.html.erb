@@ -1,13 +1,3 @@
-<div>
-  <ul>
-    <li><%= link_to "Big Name Shop", '/items/all' %></li>
-    <li><%= link_to "Cart Placeholder", '/cart' %></li>
-    <li><%= form_tag '/signout' do %>
-      <%= submit_tag 'Sign Out'%>
-    <% end %></li>
-  </ul>
-</div>
-
 <h1><%= @user.username.titleize %>'s Dashboard</h1>
 <h2><%= link_to "Shop", '/items/all' %></h2> <br>
 <p>  <%= link_to "Sell an Item", '/items/new' %></p>

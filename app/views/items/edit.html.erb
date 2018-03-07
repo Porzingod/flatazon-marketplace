@@ -1,20 +1,20 @@
-<h1>Edit an Item</h1> <br>
+<h1>Edit Item</h1> <br>
 
-<h5>Picture Placeholder</h5> <br>
-
-<%= form_tag('/items/all') do %>
-  <%= label_tag :name %>
-  <%= text_field_tag "item[name]" %>
-  <%= label_tag :price %>
-  <%= number_field_tag "item[price]" %>
-  <%= label_tag :quantity %>
-  <%= number_field_tag "item[quantity]" %>
-  <%= label_tag :category %>
-  <%= select_tag "item[category_id]", options_from_collection_for_select(Category.all, :id, :name) %>
-  <% number_field_tag "item[user_id]", value: session[:user_id] %>
+<%= form_for @item, url: items_all_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field "name" %>
+  <%= f.label :price %>
+  <%= f.number_field "price" %>
+  <%= f.label :quantity %>
+  <%= f.number_field "quantity" %>
+  <%= f.label :category %>
+  <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+  <% f.number_field "user_id", value: session[:user_id] %>
+  <%= f.label :image %><br>
+  <%= f.file_field "image" %>
   <%= label_tag :description %>
-  <%= text_area_tag :description %>
-  <%= submit_tag "Create Item"%>
+  <%= text_area_tag "description" %>
+  <%= f.submit "Edit Item"%>
 <% end %>
 
 <%= link_to "Delete Item", delete_category_item_path(@item.category, @item) %>

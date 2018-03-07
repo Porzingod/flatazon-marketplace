@@ -9,6 +9,8 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :quantity, inclusion: 1..99
 
+  mount_uploader :image, ImageUploader
+
   def price_formatted
     "#{sprintf("%.2f", price)}"
   end
