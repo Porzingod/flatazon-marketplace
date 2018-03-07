@@ -2,12 +2,13 @@
 
 <h5>Picture Placeholder</h5> <br>
 
-<%= form_tag('items/new') do %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %>
-  <%= label_tag :price %>
-  <%= number_field_tag :price %>
-  <%= label_tag :quantity %>
-  <%= number_field_tag :quantity %>
-  <%= submit_tag %>
+<%= form_for @item, :url => url_for(:controller => 'items', :action => 'post') do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+  <%= f.label :quantity %>
+  <%= f.number_field :quantity %>
+  <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+  <%= f.submit %>
 <% end %>
