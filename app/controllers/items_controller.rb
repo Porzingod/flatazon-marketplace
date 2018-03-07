@@ -12,6 +12,13 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @item = Item.create(item_params)
+
+    if @item.save
+      redirect_to category_item_path(@item.category, @item)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -21,6 +28,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    if item[:owner_id] == session[:user_id]
+      item.destroy
+    else
+      error "you do not have permission to delete this item"
+    end
   end
 
   def add_to_cart

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   patch '/dashboard', to: "users#update"
   get '/dashboard', to: "users#show"
   get '/items/all', to: "items#index"
+  get 'items/new', to: "items#new"
   get '/cart', to: "carts#index"
   post '/checkout', to: "carts#checkout"
 
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:new, :create, :edit, :update]
 
   resources :categories, only: [:show] do
-    resources :items, except: [:index] do
+    resources :items, except: [:index, :new] do
       member do
         post 'add_to_cart'
       end
