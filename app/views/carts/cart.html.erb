@@ -22,7 +22,7 @@
           <td>image placeholder </td>
           <td><%= cart.item.name%></td>
           <td>1</td>
-          <td>$<%= cart.item.price_formatted %></td>
+          <td>$ <%= cart.item.price_formatted %></td>
           <td><%= link_to "Remove Item", controller: "carts", action: "destroy", id: cart.id %></td>
         </tr>
       <% end %>
@@ -33,14 +33,14 @@
         <td></td>
         <td><strong>Subtotal: </strong></td>
         <% if @user.cart[0].present? %>
-          <td>$<%= @user.cart_total %></td>
+          <td>$ <%= @user.cart_total %></td>
         <% end %>
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td><strong>My Balance: </strong></td>
-        <td>$<%= @user.format_balance %></td>
+        <td>$ <%= @user.format_balance %></td>
       </tr>
     </div>
   </tbody>

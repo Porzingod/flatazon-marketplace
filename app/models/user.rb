@@ -47,4 +47,15 @@ class User < ApplicationRecord
     end
     user_orders
   end
+
+  def order_totals
+    show_orders.map do |order_group|
+      order_group.reduce(0) do |sum, order|
+        sum + order.item.price
+      end
+    end
+  end
+
+
+
 end

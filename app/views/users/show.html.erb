@@ -21,49 +21,50 @@
   <%= @user.addresses[0].state %> <br>
   <%= @user.addresses[0].zipcode %><br>
 </div>
-
-<p>Balance:<br>$<%= @user.format_balance %></p>
+<p>  <%= link_to "Edit Profile", edit_user_path(@user)%></p>
 
 <div class="">
-  Orders:<br>
-    <table>
-      <col width="200">
-      <col width="300">
-      <col width="100">
-      <col width="100">
-      <col width="100">
-      <thead>
-       <tr>
-         <th colspan="5"></th>
-       </tr>
-      </thead>
-      <tbody>
-        <% @user.show_orders.each do |order_group| %>
+<h2>Balance:</h2>
+$ <%= @user.format_balance %>
+</div>
+
+<h2>Orders:</h2>
+<table>
+  <col width="200">
+  <col width="300">
+  <col width="100">
+  <col width="100">
+  <col width="100">
+  <thead>
+   <tr>
+     <th colspan="5"></th>
+   </tr>
+  </thead>
+  <tbody>
+    <% @user.show_orders.each do |order_group| %>
+      <tr>
+        <td><strong>Order Date</strong></td>
+        <td><strong>Item</strong></td>
+        <td><strong>Price</strong></td>
+        <td><strong>Quantity</strong></td>
+        <td><strong>Order Total</strong></td>
+      </tr>
+        <% order_group.each do |order| %>
           <tr>
-            <td><strong>Order Date</strong></td>
-            <td><strong>Item</strong></td>
-            <td><strong>Price</strong></td>
-            <td><strong>Quantity</strong></td>
-            <td><strong>Subtotal</strong></td>
-          </tr>
-          <%= order_group.each do |order| %>
-            <tr>
-              <td><%= order.date_formatted %> </td>
-              <td><%= order.item.name %></td>
-              <td>$<%= order.item.price_formatted %></td>
-              <td><%= 1 %></td>
-              <td></td>
-            </tr>
-          <% end %>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><%= order.date_formatted %> </td>
+            <td><%= order.item.name %></td>
+            <td>$ <%= order.item.price_formatted %></td>
+            <td><%= 1 %></td>
             <td></td>
           </tr>
         <% end %>
-        </tbody>
-      </table>
-</div>
-<%= link_to "Edit Profile", edit_user_path(@user)%>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>$ <%= "#{sprintf("%.2f", @user.order_totals[@user.show_orders.index(order_group)])}" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
