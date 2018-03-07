@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/items/all', to: "items#index"
   get '/cart', to: "carts#cart"
   get 'items/new', to: "items#new"
+  post 'items/all', to: 'items#create'
   get '/cart', to: "carts#index"
   post '/checkout', to: "carts#checkout"
   get '/carts/:id', to: "carts#destroy"
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:show] do
-    resources :items, except: [:index, :new] do
+    resources :items, except: [:index] do
       member do
         post 'add_to_cart'
       end

@@ -2,12 +2,15 @@
 
 <h5>Picture Placeholder</h5> <br>
 
-<%= form_tag('items/new') do %>
+<%= form_tag('/items/all') do %>
   <%= label_tag :name %>
-  <%= text_field_tag :name %>
+  <%= text_field_tag "item[name]" %>
   <%= label_tag :price %>
-  <%= number_field_tag :price %>
+  <%= number_field_tag "item[price]" %>
   <%= label_tag :quantity %>
-  <%= number_field_tag :quantity %>
-  <%= submit_tag %>
+  <%= number_field_tag "item[quantity]" %>
+  <%= label_tag :category %>
+  <%= select_tag "item[category_id]", options_from_collection_for_select(Category.all, :id, :name) %>
+  <% number_field_tag "item[user_id]", value: session[:user_id] %>
+  <%= submit_tag "Create Item"%>
 <% end %>

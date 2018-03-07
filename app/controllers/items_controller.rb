@@ -12,8 +12,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
-
+    @item = Item.new(item_params)
+    @item.update(user_id: session[:user_id])
     if @item.save
       redirect_to category_item_path(@item.category, @item)
     else
@@ -25,6 +25,11 @@ class ItemsController < ApplicationController
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to category_item_path(@item.category, @item)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -58,6 +63,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :price, :quantity, :term)
+    params.require(:item).permit(:name, :price, :quantity, :user_id, :category_id, :term)
   end
 end
