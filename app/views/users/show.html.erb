@@ -52,8 +52,8 @@ $ <%= @user.format_balance %>
         <% order_group.each do |order| %>
           <tr>
             <td><%= order.date_formatted %> </td>
-            <td><%= order.item.name %></td>
-            <td>$ <%= order.item.price_formatted %></td>
+            <td><%= order.item_name %></td>
+            <td>$ <%= order.item_price_formatted %></td>
             <td><%= 1 %></td>
             <td></td>
           </tr>

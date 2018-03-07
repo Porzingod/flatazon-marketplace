@@ -42,17 +42,25 @@ class ItemsController < ApplicationController
 
   def add_to_cart
     set_item
+    @user = User.find(session[:user_id])
     if session[:user_id]
-      if @item.user.id != session[:user_id]
-        @user = User.find(session[:user_id])
-        @item = Item.find(params[:id])
-        Cart.create(user: @user, item: @item)
-        redirect_to '/cart'
+      if @item.quantity > @user.cart.select{|cart| cart.item.name == @item.name}.count
+        if @item.user.id != session[:user_id]
+          @user = User.find(session[:user_id])
+          @item = Item.find(params[:id])
+          Cart.create(user: @user, item: @item)
+          redirect_to '/cart'
+        else
+          render :show
+          #can't add own item to cart
+        end
       else
         render :show
+        #can't add greater qty than available
       end
     else
       render :show
+      #can't add items to cart unless signed in
     end
   end
 
