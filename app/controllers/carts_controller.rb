@@ -23,8 +23,8 @@ class CartsController < ApplicationController
           citem.delete
         end
         @cart.shift
-        redirect_to '/cart'
       end
+      redirect_to '/cart'
     else
       redirect_to '/cart'
     end
