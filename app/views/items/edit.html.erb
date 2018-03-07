@@ -1,0 +1,13 @@
+<h1>Edit an Item</h1> <br>
+
+<h5>Picture Placeholder</h5> <br>
+
+<%= form_tag('items/new') do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name %>
+  <%= label_tag :price %>
+  <%= number_field_tag :price %>
+  <%= label_tag :quantity %>
+  <%= number_field_tag :quantity %>
+  <%= submit_tag %>
+<% end %>
