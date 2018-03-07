@@ -21,13 +21,14 @@ class CartsController < ApplicationController
         citem.update(quantity: (item_qty_remaining - 1))
         @user.update(balance: (buyer_balance - item_price))
         citem.user.update(balance: (seller_balance + item_price))
-        Order.create(user: @user, item: citem, order_date: order_date)
+        byebug
+        Order.create(user: @user, item_name: citem.name, item_price: citem.price, item_quantity: 1, order_date: order_date)
         if citem.quantity == 0
           citem.delete
         end
         cart.delete
       end
-      redirect_to '/cart'
+      redirect_to '/dashboard'
     else
       redirect_to '/cart'
     end

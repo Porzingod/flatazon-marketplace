@@ -51,7 +51,7 @@ class User < ApplicationRecord
   def order_totals
     show_orders.map do |order_group|
       order_group.reduce(0) do |sum, order|
-        sum + order.item.price
+        sum + order.item_price
       end
     end
   end

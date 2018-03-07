@@ -2,7 +2,6 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :user
   has_many :reviews
-  has_many :orders
   has_many :carts
   has_many :items, through: :carts
 
