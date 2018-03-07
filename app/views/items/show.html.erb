@@ -8,7 +8,9 @@
   Description: <br>
   <%= @item.description %>
   <strong>Image:</strong>
-  <%= image_tag(@item.image_url(:thumb)) %>
+  <% if @item.image_url %>
+    <%= image_tag(@item.image_url(:thumb)) %>
+  <% end %>
 </div>
 
 <div class="">

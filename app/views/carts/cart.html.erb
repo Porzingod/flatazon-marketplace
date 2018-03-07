@@ -32,7 +32,7 @@
         <td></td>
         <td></td>
         <td><strong>Subtotal: </strong></td>
-        <% if @user.cart[0].present? %>
+        <% if @user.cart[0].present? && Item.find_by(id: @user.cart[0].item_id)%>
           <td>$ <%= @user.cart_total %></td>
         <% end %>
       </tr>
