@@ -12,5 +12,9 @@
   <%= label_tag :category %>
   <%= select_tag "item[category_id]", options_from_collection_for_select(Category.all, :id, :name) %>
   <% number_field_tag "item[user_id]", value: session[:user_id] %>
+  <%= label_tag :description %>
+  <%= text_area_tag :description %>
   <%= submit_tag "Create Item"%>
 <% end %>
+
+<%= link_to "Delete Item", delete_category_item_path(@item.category, @item) %>

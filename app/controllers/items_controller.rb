@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    byebug
     @item = Item.new(item_params)
     @item.update(user_id: session[:user_id])
     if @item.save
@@ -71,6 +72,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :price, :quantity, :user_id, :category_id, :term)
+    params.require(:item).permit(:name, :price, :quantity, :user_id, :category_id, :term, :description)
   end
 end

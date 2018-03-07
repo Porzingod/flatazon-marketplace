@@ -4,18 +4,20 @@
   $ <%= @item.price_formatted %><br>
   <%= @item.quantity %> Available<br>
   Sold by: <%= @item.user.username %><br>
+  Description: <br>
+  <%= @item.description %>
 </div>
 
 <div class="">
-  Add to Cart Placeholder
+  <%= form_tag add_to_cart_category_item_path(@item.category, @item) do %>
+    <%= submit_tag 'Add to Cart'%>
+  <% end %>
 </div>
 
 <div class="">
   Reviews placeholder
 </div>
 
-<%= form_tag add_to_cart_category_item_path(@item.category, @item) do %>
-  <%= submit_tag 'Add to Cart'%>
-<% end %> <br>
+
 
 <%= link_to "Back to Shopping", '/items/all'%>

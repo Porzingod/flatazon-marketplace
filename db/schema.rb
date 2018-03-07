@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20180307005444) do
     t.integer "quantity"
     t.integer "category_id"
     t.integer "user_id"
+    t.string "description", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_items_on_category_id"

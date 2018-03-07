@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.integer :quantity
       t.belongs_to :category
       t.belongs_to :user
+      t.string :description
 
       t.timestamps
     end
