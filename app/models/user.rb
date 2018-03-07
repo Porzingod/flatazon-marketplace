@@ -30,4 +30,21 @@ class User < ApplicationRecord
     price = self.cart.reduce(0) {|sum, cart| sum + cart.item.price}
     format_money(price)
   end
+
+  def show_orders
+    order_dates = []
+    user_orders = []
+    self.orders.each do |order|
+      if order_dates.include? (order.order_date)
+        next
+      else
+        order_dates << order.order_date
+      end
+    end
+    order_dates.each do |date|
+      orders_from_date = self.orders.select{|order| order.order_date == date}
+      user_orders << orders_from_date
+    end
+    user_orders
+  end
 end
