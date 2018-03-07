@@ -6,7 +6,9 @@
   Sold by: <%= @item.user.username %><br>
 
   Description: <br>
-  <%= @item.description %>
+  <% if @item.description %>
+    <%= @item.description %>
+  <% end %>
   <strong>Image:</strong>
   <% if @item.image_url %>
     <%= image_tag(@item.image_url(:thumb)) %>
