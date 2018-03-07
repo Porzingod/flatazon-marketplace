@@ -1,4 +1,12 @@
 <h1>List of all Items</h1>
+<%= link_to "User Dashboard", '/dashboard' %> <br>
+
+<%= form_tag('/items/all', method: :get) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag "Filter", name: nil %>
+<% end %>
+
+
 <table>
     <col width="200">
     <col width="300">
@@ -25,4 +33,4 @@
       </tr>
       <% end %>
     </tbody>
-  </table>
+  </table> <br>

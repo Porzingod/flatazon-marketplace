@@ -1,29 +1,26 @@
 class ItemsController < ApplicationController
-
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
-    @items = Item.all
+    @items = Item.search(params[:term])
   end
 
   def show
-    set_item
   end
 
   def new
+    @item = Item.new
   end
 
   def create
   end
 
   def edit
-    set_item
   end
 
   def update
-    set_item
   end
 
   def destroy
-  #
   end
 
   def add_to_cart
@@ -49,5 +46,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
+    params.require(:item).permit(:name, :price, :quantity, :term)
   end
 end
