@@ -26,11 +26,12 @@ class ItemsController < ApplicationController
   end
 
   def update
-    byebug
-    if @item.update(item_params)
-      redirect_to category_item_path(@item.category, @item)
-    else
-      render :edit, :notice => 'there was an error'
+    if @item.user.id == session[:user_id]
+      if @item.update(item_params)
+        redirect_to category_item_path(@item.category, @item)
+      else
+        render :edit, :notice => 'there was an error'
+      end
     end
   end
 
