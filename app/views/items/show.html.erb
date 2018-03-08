@@ -1,31 +1,23 @@
-
-<h1>Image Placeholder</h1>
+<% if @item.image_url %>
+  <%= image_tag(@item.image_url(:thumb)) %> <br>
+<% end %>
+<br>
 <div>
-  <%= @item.name %><br>
+  <h3><%= @item.name %></h3>
   $ <%= @item.price_formatted %><br>
-  <%= @item.quantity %> Available<br>
-  Sold by: <%= @item.user.username %><br>
-
+  Quantity: <%= @item.quantity %> Available<br>
+  Sold By: <%= @item.user.username %><br>
+<br>
   Description: <br>
   <% if @item.description %>
     <%= @item.description %>
   <% end %>
-  <strong>Image:</strong>
-  <% if @item.image_url %>
-    <%= image_tag(@item.image_url(:thumb)) %>
-  <% end %>
 </div>
-
+<br>
+<br>
 <div class="">
   <%= form_tag add_to_cart_category_item_path(@item.category, @item) do %>
     <%= submit_tag 'Add to Cart'%>
   <% end %>
 </div>
-
-<div class="">
-  Reviews placeholder
-</div>
-
-
-
-<%= link_to "Back to Shopping", '/items/all'%>
+<h3><%= link_to "Back to Shopping", '/items/<a href=""></a>ll'%></h3>

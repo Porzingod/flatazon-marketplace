@@ -1,28 +1,27 @@
-
 <h1><%= @user.username.titleize %>'s Dashboard</h1>
-
-
-<h2><%= link_to "Shop", '/items/all' %></h2> <br>
-
-<p><h3>Email:</h3><%= @user.email %></p><br>
-
-<div>
-  <h3>Address:</h3>
-  <%= @user.addresses[0].street_address_1 %> <br>
-  <%= @user.addresses[0].street_address_2 %> <br>
-  <%= @user.addresses[0].city %> <br>
-  <%= @user.addresses[0].state %> <br>
-  <%= @user.addresses[0].zipcode %><br>
-</div>
-<p>  <%= link_to "Edit Profile", edit_user_path(@user)%></p>
 
 <div class="">
 <h2>Balance:</h2>
 $ <%= @user.format_balance %>
 </div>
 
+<h2>Email:</h2>
+<%= @user.email %> <br>
+<br>
+<div>
+  <h2>Address:</h2>
+  <%= @user.addresses[0].street_address_1 %> <br>
+  <%= @user.addresses[0].street_address_2 %> <br>
+  <%= @user.addresses[0].city %> <br>
+  <%= @user.addresses[0].state %> <br>
+  <%= @user.addresses[0].zipcode %><br>
+</div>
+<br>
+<p>  <%= link_to "Edit Profile", edit_user_path(@user)%></p>
+
+
 <h2><%= link_to "Inventory", '/inventory' %></h2>
-<h3><%= link_to "Add New Item", '/items/new' %></h3>
+<h2><%= link_to "Add New Item", '/items/new' %></h2>
 
 <h2>Orders:</h2>
 <table>

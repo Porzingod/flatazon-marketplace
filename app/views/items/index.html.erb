@@ -1,31 +1,28 @@
 
-<h1>List of all Items</h1>
-<%= link_to "User Dashboard", '/dashboard' %> <br>
+<h1>Home</h1>
 
 
-<table>
-    <col width="200">
-    <col width="300">
-    <col width="100">
-    <col width="100">
+<table class="ui celled padded table">
     <thead>
-     <tr>
-       <th colspan="4"></th>
-     </tr>
+      <tr><th class="single line center aligned">Image</th>
+        <th class="center aligned" =>Item Name</th>
+        <th class="center aligned">Price</th>
+        <th class="center aligned">Qty Available</th>
+      </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><strong>Image</strong></td>
-        <td><strong>Item</strong></td>
-        <td><strong>Price</strong></td>
-        <td><strong>Quantity Available</strong></td>
-      </tr>
       <% @items.each do |item| %>
       <tr>
-        <td>image placeholder </td>
-        <td><%= link_to item.name, category_item_path(item.category, item) %></td>
-        <td>$ <%= item.price_formatted %></td>
-        <td><%= item.quantity %></td>
+        <td class="center aligned"><% if item.image_url %>
+          <%= image_tag(item.image_url(:thumb))%> <br>
+        <% end %></td>
+        <td class="center aligned"><h4><%= link_to item.name, category_item_path(item.category, item) %></h4></td>
+        <td class="center aligned"><h4>$ <%= item.price_formatted %></h4></td>
+        <td class="center aligned"><h4><%= item.quantity %> </h4>
+          <%= form_tag add_to_cart_category_item_path(item.category, item) do %>
+            <%= submit_tag 'Add to Cart', class: "ui button"%>
+          <% end %>
+      </td>
       </tr>
       <% end %>
     </tbody>
