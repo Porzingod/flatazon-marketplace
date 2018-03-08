@@ -28,7 +28,6 @@ class SessionsController < ApplicationController
   end
 
   def welcome
-    render layout: false
     if session[:user_id]
       redirect_to '/dashboard'
     end
