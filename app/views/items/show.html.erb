@@ -6,9 +6,9 @@
   <h3><%= @item.name %></h3>
   $ <%= @item.price_formatted %><br>
   Quantity: <%= @item.quantity %> Available<br>
-  Sold By: <%= @item.user.username %><br>
+  Sold By: <%= @item.user.username.titleize %><br>
 <br>
-  Description: <br>
+  Description: <br> <br>
   <% if @item.description %>
     <%= @item.description %>
   <% end %>
