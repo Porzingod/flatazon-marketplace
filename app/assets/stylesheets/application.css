@@ -28,10 +28,15 @@
 .ui.button.search-padding {
   padding: 2px 0px 2px 10px;
 }
+
 .ui.icon.input.segment {
   padding: 0;
 }
 
 .no-border {
   border: 0px;
+}
+
+.no-padding {
+  padding: 0;
 }
