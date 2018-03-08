@@ -1,11 +1,5 @@
 class SessionsController < ApplicationController
 
-  def new
-    if session[:user_id]
-      redirect_to '/dashboard'
-    end
-  end
-
   def create
     if params[:password] || params[:password] != ""
       @user = User.find_by(username: params[:username])
@@ -32,7 +26,7 @@ class SessionsController < ApplicationController
       redirect_to '/'
     end
   end
-  
+
   def welcome
     if session[:user_id]
       redirect_to '/dashboard'
