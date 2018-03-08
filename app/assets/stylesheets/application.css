@@ -43,8 +43,14 @@
 
 .super-large {
   font-size: 75px;
+  font-weight: 2000;
+  font-style: italic;
 }
 
 .center-foot {
   text-align: center;
+}
+
+.my-black {
+  color: 000;
 }

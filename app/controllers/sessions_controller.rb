@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  layout false
+  
   def welcome
     if session[:user_id]
       redirect_to '/dashboard'
