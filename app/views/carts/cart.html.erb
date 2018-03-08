@@ -19,7 +19,9 @@
     <% @cart.each do |cart| %>
       <% if cart.item.present? %>
         <tr>
-          <td>image placeholder </td>
+          <td class="center aligned"><% if cart.item.image_url %>
+              <%= image_tag(cart.item.image_url(:thumb))%> <br>
+            <% end %></td>
           <td><%= cart.item.name%></td>
           <td>1</td>
           <td>$ <%= cart.item.price_formatted %></td>

@@ -1,3 +1,4 @@
+<script type="text/javascript">$(document).ready(function(){$(".rating").rating();});</script>
 
 <h1>Home</h1>
 
@@ -19,6 +20,7 @@
         <td class="center aligned"><h4><%= link_to item.name, category_item_path(item.category, item) %></h4></td>
         <td class="center aligned"><h4>$ <%= item.price_formatted %></h4></td>
         <td class="center aligned"><h4><%= item.quantity %> </h4>
+            <div class="ui star rating" data-rating="3"></div>
           <%= form_tag add_to_cart_category_item_path(item.category, item) do %>
             <%= submit_tag 'Add to Cart', class: "ui button"%>
           <% end %>

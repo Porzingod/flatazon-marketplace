@@ -1,3 +1,5 @@
+<script type="text/javascript">$(document).ready(function(){$(".rating").rating();});</script>
+
 <% if @item.image_url %>
   <%= image_tag(@item.image_url(:thumb)) %> <br>
 <% end %>
@@ -7,6 +9,7 @@
   $ <%= @item.price_formatted %><br>
   Quantity: <%= @item.quantity %> Available<br>
   Sold By: <%= @item.user.username.titleize %><br>
+  <div class="ui star rating" data-rating="3"></div>
 <br>
   Description: <br> <br>
   <% if @item.description %>
