@@ -3,11 +3,11 @@
 
 
 <h2><%= link_to "Shop", '/items/all' %></h2> <br>
-<p>  <%= link_to "Sell an Item", '/items/new' %></p>
-<p>Email:<br><%= @user.email %></p>
+
+<p><h3>Email:</h3><%= @user.email %></p><br>
 
 <div>
-  Address: <br>
+  <h3>Address:</h3>
   <%= @user.addresses[0].street_address_1 %> <br>
   <%= @user.addresses[0].street_address_2 %> <br>
   <%= @user.addresses[0].city %> <br>

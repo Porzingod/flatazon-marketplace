@@ -21,38 +21,35 @@
 
  </head>
 </head>
-<body style="padding: 5em; padding-top: 2em">
-
-  <div class="ui secondary  menu">
-  <a>
-    <%= link_to "Dashboard", '/dashboard', class: "item active" %>
-  </a>
-  <a>
-    <%= link_to "Shop", '/items/all', class: "item" %>
-  </a>
-  <a>
-    <%= link_to "Cart", '/cart', class: "item" %>
-  </a>
-  <div class="right menu">
-    <div class="item">
-      <div class="ui icon input segment">
-        <%= form_tag('/items/all', method: :get) do %>
-          <%= text_field_tag :term, params[:term] %>
-          <%= button_tag type: :submit, class: "ui button white-bg" do %>
-            <i class="search icon"></i>
+<body>
+  <div class="nav-padding">
+    <div class="ui secondary  menu">
+      <a href='/dashboard' class="item">Dashboard</a>
+      <a href='/items/all' class="item">Shop</a>
+      <a href='/cart' class="item">Cart</a>
+      <div class="right menu">
+        <div class="item">
+          <div class="ui icon input segment">
+            <%= form_tag('/items/all', method: :get) do %>
+              <input type="text" name="term" placeholder="Search...">
+              <%= button_tag type: :submit, class: "ui button search-padding white-bg" do %>
+                <i class="search link icon"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <a class="ui item">
+          <%= form_tag '/signout' do %>
+            <%= submit_tag 'Sign Out', class: "ui item no-border"%>
           <% end %>
-        <% end %>
+        </a>
       </div>
     </div>
-    <a class="ui item">
-      <%= form_tag '/signout' do %>
-        <%= submit_tag 'Sign Out'%>
-      <% end %>
-    </a>
   </div>
-</div>
 
- <%= yield %>
+  <div class="body-padding">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

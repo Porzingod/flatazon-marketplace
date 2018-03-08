@@ -1,4 +1,9 @@
 class SessionsController < ApplicationController
+  def welcome
+    if session[:user_id]
+      redirect_to '/dashboard'
+    end
+  end
 
   def create
     if params[:password] || params[:password] != ""
@@ -27,10 +32,4 @@ class SessionsController < ApplicationController
     end
   end
 
-  def welcome
-    render layout: false
-    if session[:user_id]
-      redirect_to '/dashboard'
-    end
-  end
 end

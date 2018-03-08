@@ -13,18 +13,25 @@
  *= require_tree .
  *= require_self
  */
+.nav-padding {
+  padding: 1.5em 5em;
+}
 
- /*.search_bar {
-   background-color: teal;
- }
+.body-padding {
+  padding: 1em 12em;
+}
 
-.own_class {
-  color: white;
-}*/
 .ui.button.white-bg {
   background-color: white;
 }
 
+.ui.button.search-padding {
+  padding: 2px 0px 2px 10px;
+}
 .ui.icon.input.segment {
   padding: 0;
+}
+
+.no-border {
+  border: 0px;
 }
