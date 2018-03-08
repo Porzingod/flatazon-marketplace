@@ -14,13 +14,13 @@ class SessionsController < ApplicationController
           session[:user_id] = @user.id
           redirect_to "/dashboard"
         else
-          render :new
+          redirect_to root
         end
       else
-        render :new
+        redirect_to root
       end
     else
-      render :new
+      redirect_to root
     end
   end
 
@@ -30,6 +30,12 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
       redirect_to '/'
+    end
+  end
+  
+  def welcome
+    if session[:user_id]
+      redirect_to '/dashboard'
     end
   end
 end

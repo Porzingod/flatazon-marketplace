@@ -1,4 +1,6 @@
 <h1><%= @user.username.titleize %>'s Dashboard</h1>
+
+
 <h2><%= link_to "Shop", '/items/all' %></h2> <br>
 <p>  <%= link_to "Sell an Item", '/items/new' %></p>
 <p>Email:<br><%= @user.email %></p>

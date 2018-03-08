@@ -1,0 +1,43 @@
+<div class="signs">
+<br>
+</div>
+<body>
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui teal image header">
+      <div class="content">
+        <h1>Sign In</h1>
+      </div>
+    </h2>
+    <div class="ui large form">
+      <%= form_tag '/signin' do %>
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+              <%= text_field_tag :username, nil, placeholder: "Username" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <%= password_field_tag :password, nil, placeholder: "Password" %>
+          </div>
+        </div>
+        <div>
+        <%= submit_tag "Login", class: "ui fluid large teal submit button" %>
+        </div>
+      </div>
+
+
+      <div class="ui error message"></div>
+  <% end %>
+
+    <div class="ui message">
+      New to us? <%= link_to "Sign Up", '/signup' %> or<br>
+      <%= link_to "Continue as Guest", '/items/all' %>
+    </div>
+  </div>
+</div>
+
+</body>
