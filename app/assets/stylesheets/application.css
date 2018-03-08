@@ -13,15 +13,18 @@
  *= require_tree .
  *= require_self
  */
- body {
-   margin: 0;
-   padding: 0;
-   height: auto;
-   width: auto;
-   font-size: 50px;
-   position: relative;
+
+ /*.search_bar {
+   background-color: teal;
  }
 
- .signs {
-   font-size: 30px;
- }
+.own_class {
+  color: white;
+}*/
+.ui.button.white-bg {
+  background-color: white;
+}
+
+.ui.icon.input.segment {
+  padding: 0;
+}
