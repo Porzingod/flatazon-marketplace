@@ -14,11 +14,11 @@
  *= require_self
  */
 .nav-padding {
-  padding: 1.5em 5em;
+  padding: .5em 5em;
 }
 
 .body-padding {
-  padding: 1em 12em;
+  padding: 1.5em 12em;
 }
 
 .ui.button.white-bg {
@@ -39,4 +39,12 @@
 
 .no-padding {
   padding: 0;
+}
+
+.super-large {
+  font-size: 75px;
+}
+
+.center-foot {
+  text-align: center;
 }

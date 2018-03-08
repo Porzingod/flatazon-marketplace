@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :addresses
   accepts_nested_attributes_for :addresses, allow_destroy: true
 
-  validates :username, :email, uniqueness: true
+  validates :username, :email, uniqueness: true, presence: true
 
   def cart
     Cart.all.select {|cart| cart.user == self}
