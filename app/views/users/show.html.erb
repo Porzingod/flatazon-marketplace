@@ -1,4 +1,8 @@
-<h1><%= @user.username.titleize %>'s Dashboard</h1>
+<% if flash[:notice] %>
+   <h1 class="ui center aligned"><%= flash[:notice] %></h1>
+<% end %>
+
+<h1 class='ui center aligned header'><%= @user.username.titleize %>'s Dashboard</h1>
 
 <div class="">
 <h2>Balance:</h2>

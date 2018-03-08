@@ -15,7 +15,9 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
+      @user.update(balance: 100)
       redirect_to '/dashboard'
+      flash[:notice] = '🎉🎊 Thank you for signing up! Here\'s $100 as a sign up bonus!! 🎊🎉'
     else
       render :new
     end
