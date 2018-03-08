@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    byebug
     @item = Item.new(item_params)
     @item.update(user_id: session[:user_id])
     if @item.save
