@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
+    @categories = Category.all
     @items = Item.search(params[:term])
   end
 
