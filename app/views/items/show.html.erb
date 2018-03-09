@@ -1,5 +1,5 @@
 <script type="text/javascript">$(document).ready(function(){$(".rating").rating();});</script>
-
+<%= render "categories" %>
 <% if @item.image_url %>
   <%= image_tag(@item.image_url(:thumb)) %> <br>
 <% end %>

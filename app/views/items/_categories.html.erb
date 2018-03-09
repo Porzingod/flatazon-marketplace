@@ -1,0 +1,5 @@
+<%= form_tag('/items/all', method: :get) do %>
+  <%= select_tag :term, options_from_collection_for_select(Category.all, :name, :name, params[:term]), {prompt: "Select Category"}%>
+  <%= submit_tag "Filter", name: nil %>
+<% end %>
+<br>
