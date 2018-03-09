@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
 
   def add_to_cart
     set_item
-    @user = User.find(session[:user_id])
+    @user = User.find_by(id: session[:user_id])
     if session[:user_id]
       if @item.quantity > @user.cart.select{|cart| cart.item.name == @item.name}.count
         if @item.user.id != session[:user_id]

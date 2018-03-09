@@ -11,9 +11,9 @@ class CartsController < ApplicationController
     @user = User.find(session[:user_id])
     @user.cart
     if @user.balance >= @user.cart_total.to_f
-      buyer_balance = @user.balance.to_f
       order_date = Time.now.strftime("%m/%d/%Y -- %I:%M:%S%p")
       @user.cart.each do |cart|
+        buyer_balance = @user.balance.to_f
         citem = cart.item
         seller_balance = citem.user.balance
         item_qty_remaining = citem.quantity
