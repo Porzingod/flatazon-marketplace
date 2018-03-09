@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   layout false
-  
+
   def welcome
     if session[:user_id]
       redirect_to '/dashboard'
@@ -15,22 +15,22 @@ class SessionsController < ApplicationController
           session[:user_id] = @user.id
           redirect_to "/dashboard"
         else
-          redirect_to root
+          redirect_to root_url
         end
       else
-        redirect_to root
+        redirect_to root_url
       end
     else
-      redirect_to root
+      redirect_to root_url
     end
   end
 
   def destroy
     if params
       session.delete(:user_id)
-      redirect_to '/'
+      redirect_to root_url
     else
-      redirect_to '/'
+      redirect_to root_url
     end
   end
 

@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def show
     if @user.nil?
-      redirect_to '/'
+      redirect_to root_url
     else
       render :show
     end
